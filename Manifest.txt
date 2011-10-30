@@ -3,6 +3,7 @@ Manifest.txt
 README.rdoc
 Rakefile
 lib/kuro-rs.rb
+lib/kuro-rs/main.rb
 script/console
 script/destroy
 script/generate
@@ -10,3 +11,6 @@ spec/kuro-rs_spec.rb
 spec/spec.opts
 spec/spec_helper.rb
 tasks/rspec.rake
+examples/read.rb
+examples/write.rb
+bin/kuro-rs
