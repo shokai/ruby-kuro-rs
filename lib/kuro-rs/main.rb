@@ -19,6 +19,10 @@ module KuroRs
       end
       @sp = SerialPort.new(device_name, 115200, 8, 1, 0)
     end
+
+    def close
+      @sp.close
+    end
     
     def read
       ## request reading mode
