@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'kuro-rs'
+
+if ARGV.size < 1
+  puts '!!Device Name and Hex String required'
+  puts 'read  -  kuro-rs /dev/tty.usbserial-0012a3b4'
+  puts 'write -  kuro-rs /dev/tty.usbserial-0012a3b4 ffffffff0300f0e0018083...'
+  exit 1
+end
+
+device_name = ARGV.shift
+hex_str = ARGV.shift
+
+begin
+  kr = KuroRs.open device_name
+rescue KuroRs::Error, StandardError => e
+  STDERR.puts e
+  exit 1
+end
+
+kr.verbose = true
+if hex_str.to_s.size > 0
+  kr.write hex_str  
+else
+  puts kr.read
+end
+
