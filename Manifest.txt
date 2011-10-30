@@ -1,0 +1,12 @@
+History.txt
+Manifest.txt
+README.rdoc
+Rakefile
+lib/kuro-rs.rb
+script/console
+script/destroy
+script/generate
+spec/kuro-rs_spec.rb
+spec/spec.opts
+spec/spec_helper.rb
+tasks/rspec.rake

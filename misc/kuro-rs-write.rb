@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-## 16進dumpされたデータをKURO-RSの赤外線LEDから発射する
+## hex dumpされたデータをKURO-RSの赤外線LEDから発射する
 require 'rubygems'
 gem 'serialport','>=1.0.4'
 require 'serialport'
