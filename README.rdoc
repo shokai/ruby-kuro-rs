@@ -27,13 +27,25 @@ control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928) and PC-O
 
 == TOOLS:
 
-you can use simple command line application.
+simple command line application.
 
   # read
-  % kuro-rs /dev.tty.usbserial-0012a3b4
+  % kuro-rs /dev/tty.usbserial-0012a3b4
 
   # write
-  % kuro-rs /dev.tty.usbserial-0012a3b4 ffffffff0300f0e0018083...
+  % kuro-rs /dev/tty.usbserial-0012a3b4 ffffffff0300f0e0018083...
+
+
+http interface
+
+  # run server
+  % kuro-rs-server /dev/tty.usbserial-0012a3b4 -p 8080
+
+  # read
+  % curl 'http://localhost:8080'
+
+  # write
+  % curl -d 'ffffffff0300f0e0018083...' 'http://localhost:8080'
 
 == REQUIREMENTS:
 
