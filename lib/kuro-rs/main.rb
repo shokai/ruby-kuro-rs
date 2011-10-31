@@ -83,13 +83,11 @@ module KuroRs
       ## write hex string
       cmd_arr = []
       arr = hex_str.split('')
-      loop do
-        s = arr.shift + arr.shift
-        cmd_arr << s.hex
-        break if arr.empty?
+      240.times do
+        cmd_arr << ((arr.shift || '0') + (arr.shift || '0')).hex
       end
       
-      puts "command size:#{cmd_arr.size}(Bytes)" if @verbose
+      puts "command size:#{hex_str.size/2}(Bytes)" if @verbose
       puts 'writing data...' if @verbose
       begin
         cmd_arr.each{|c|
