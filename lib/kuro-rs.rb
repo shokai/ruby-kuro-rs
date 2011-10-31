@@ -10,5 +10,5 @@ Dir.glob(File.dirname(__FILE__)+'/kuro-rs/*.rb').each do |f|
 end
 
 module KuroRs
-  VERSION = '0.0.4'
+  VERSION = '0.0.5'
 end
