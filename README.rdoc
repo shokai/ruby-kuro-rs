@@ -8,7 +8,6 @@ control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928) and PC-O
 
 == SYNOPSIS:
 
-
   require 'rubygems'
   require 'kuro-rs'
   
@@ -25,6 +24,16 @@ control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928) and PC-O
   # close
   kr.close
 
+
+== TOOLS:
+
+you can use simple command line application.
+
+  # read
+  % kuro-rs /dev.tty.usbserial-0012a3b4
+
+  # write
+  % kuro-rs /dev.tty.usbserial-0012a3b4 ffffffff0300f0e0018083...
 
 == REQUIREMENTS:
 

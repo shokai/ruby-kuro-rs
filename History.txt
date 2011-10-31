@@ -1,3 +1,7 @@
+=== 0.0.2 2011-10-31
+
+* modify timeout
+
 === 0.0.1 2011-10-31
 
 * newgem kuro-rs
