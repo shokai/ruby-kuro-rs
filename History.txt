@@ -1,3 +1,7 @@
+=== 0.0.6 2011-10-31
+
+* bug fix kuro-rs-server
+
 === 0.0.5 2011-10-31
 
 * yield given block

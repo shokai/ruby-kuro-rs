@@ -7,7 +7,7 @@ require 'ArgsParser'
 require 'json'
 
 parser = ArgsParser.parser
-parser.comment(:port, 'http port', 8080)
+parser.bind(:port, :p, 'http port', 8080)
 parser.bind(:help, :h, 'show help')
 device_name, params = parser.parse ARGV
 
