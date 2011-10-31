@@ -40,7 +40,7 @@ module KuroRs
         @sp.write 'r'
         puts 'read mode' if @verbose
         raise Error.new 'response is not "Y"' unless @sp.getc.chr == 'Y'
-        timeout(30) do
+        timeout(15) do
           while @sp.getc.chr != 'S' do end
         end
 
