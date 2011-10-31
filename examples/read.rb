@@ -11,12 +11,7 @@ end
 
 device_name = ARGV.shift
 
-begin
-  kr = KuroRs.open device_name
-rescue KuroRs::Error, StandardError => e
-  STDERR.puts e
-  exit 1
-end
-
-kr.verbose = true
-puts kr.read ## => hex dump
+KuroRs.open(device_name){|k|
+  k.verbose = true
+  puts k.read ## => hex dump
+}

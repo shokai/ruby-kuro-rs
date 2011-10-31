@@ -1,6 +1,15 @@
 module KuroRs
   def KuroRs.open(device_name)
-    KuroRs.new(device_name)
+    kr = KuroRs.new(device_name)
+    if block_given?
+      begin
+        yield kr
+      ensure
+        kr.close
+      end
+      return nil
+    end
+    return kr
   end
   
   class Error < Exception

@@ -28,6 +28,14 @@ control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928) and PC-O
   # close
   kr.close
 
+  # block
+  KuroRs.open('/dev/tty.usbserial-0012a3b4'){|k|
+    k.verbose = true
+    puts k.read
+    ## => hex dump (ffffffff0300f0e0018083...)
+  }
+
+
 
 == TOOLS:
 
