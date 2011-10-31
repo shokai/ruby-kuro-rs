@@ -2,7 +2,7 @@ module KuroRs
   def KuroRs.open(device_name)
     KuroRs.new(device_name)
   end
-
+  
   class Error < Exception
   end
   
@@ -96,6 +96,7 @@ module KuroRs
           @sp.putc c
         }
         raise Error.new 'response is not E' unless @sp.getc.chr == 'E'
+        @busy = false
       rescue => e
         @busy = false
         raise Error.new e
