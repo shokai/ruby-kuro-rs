@@ -14,3 +14,4 @@ tasks/rspec.rake
 examples/read.rb
 examples/write.rb
 bin/kuro-rs
+bin/kuro-rs-server

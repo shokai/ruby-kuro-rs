@@ -13,7 +13,10 @@ Hoe.plugin :newgem
 $hoe = Hoe.spec 'kuro-rs' do
   self.developer 'Sho Hashimoto', 'hashimoto@shokai.org'
   self.rubyforge_name       = self.name # TODO this is default value
-  self.extra_deps         = [['serialport','>= 1.0.4']]
+  self.extra_deps         = [['serialport','>= 1.0.4'],
+                             ['ArgsParser'],
+                             ['eventmachine_httpserver'],
+                             ['eventmachine']]
 
 end
 

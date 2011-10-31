@@ -1,0 +1,55 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'kuro-rs'
+require 'eventmachine'
+require 'evma_httpserver'
+require 'ArgsParser'
+require 'json'
+
+parser = ArgsParser.parser
+parser.comment(:port, 'http port', 8080)
+parser.bind(:help, :h, 'show help')
+device_name, params = parser.parse ARGV
+
+if parser.has_option(:help) or device_name.to_s.size < 1
+  puts parser.help
+  puts "e.g.  kuro-rs-server /det/tty.usbserial-0012a3b4 -port 8080"
+  exit 1
+end
+
+begin
+  @@kr = KuroRs.open device_name
+rescue KuroRs::Error, StandardError => e
+  STDERR.puts e
+  exit 1
+end
+
+class KuroRsServer < EM::Connection
+  include EM::HttpServer
+  
+  def process_http_request
+    res = EM::DelegatedHttpResponse.new self
+    puts "[http] #{@http_request_method} #{@http_path_info} #{@http_query_string} #{@http_post_content}"
+    begin
+      raise 'device busy' if @@kr.busy?
+      if @http_request_method == 'GET'
+        res.content = @@kr.read        
+      elsif @http_request_method == 'POST'
+        @@kr.write @http_post_content
+        res.content = 'success'
+      end
+      res.status = 200
+      res.send_response
+    rescue StandardError, KuroRs::Error => e
+      res.status = 500
+      res.content = e.to_s
+      res.send_response
+    end
+  end
+end
+
+
+EM::run do
+  EM::start_server("0.0.0.0", params[:port].to_i, KuroRsServer)
+  puts "kuro-rs-server start, port #{params[:port].to_i}"
+end
