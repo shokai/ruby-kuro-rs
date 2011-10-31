@@ -6,6 +6,10 @@
 
 control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928) and PC-OP-RS1 (http://buffalo.jp/products/catalog/item/p/pc-op-rs1/)
 
+== INSTALL:
+
+* gem install kuro-rs
+
 == SYNOPSIS:
 
   require 'rubygems'
@@ -50,10 +54,6 @@ http interface
 == REQUIREMENTS:
 
 * KURO-RS or PC-OP-RS1
-
-== INSTALL:
-
-* gem install kuro-rs
 
 == LICENSE:
 
