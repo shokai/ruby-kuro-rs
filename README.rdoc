@@ -4,7 +4,8 @@
 
 == DESCRIPTION:
 
-control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928) and PC-OP-RS1 (http://buffalo.jp/products/catalog/item/p/pc-op-rs1/)
+control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928),  PC-OP-RS1 (http://buffalo.jp/products/catalog/item/p/pc-op-rs1/) and Arduino IR-Remote (http://www.256byte.com/2010/01/arduino-irremote/)
+
 
 == INSTALL:
 
@@ -12,30 +13,32 @@ control KURO-RS (http://www.kuroutoshikou.com/modules/display/?iid=928) and PC-O
 
 == SYNOPSIS:
 
-  require 'rubygems'
-  require 'kuro-rs'
-  
-  # open KURO-RS
-  kr = KuroRs.open('/dev/tty.usbserial-0012a3b4')
+    require 'rubygems'
+    require 'kuro-rs'
 
-  # read
-  puts kr.read 
-  ## => hex dump (ffffffff0300f0e0018083...)
+    # open KURO-RS
+    kr = KuroRs.open('/dev/tty.usbserial-0012a3b4')
 
-  # write
-  kr.write 'ffffffff0300f0e0018083'
-
-  # close
-  kr.close
-
-  # block
-  KuroRs.open('/dev/tty.usbserial-0012a3b4'){|k|
-    k.verbose = true
-    puts k.read
+    # read
+    puts kr.read 
     ## => hex dump (ffffffff0300f0e0018083...)
-  }
+
+    # write
+    kr.write 'ffffffff0300f0e0018083'
+
+    # close
+    kr.close
+
+    # use block
+    KuroRs.open('/dev/tty.usbserial-0012a3b4'){|k|
+      # sleep 2 ## for Arduino IR-Remote
+      k.verbose = true
+      puts k.read
+      ## => hex dump (ffffffff0300f0e0018083...)
+    }
 
 
+* for Arduino IR-Remote, It needs 2 sec sleep after "KuroRs.open"
 
 == TOOLS:
 

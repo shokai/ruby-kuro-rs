@@ -19,6 +19,8 @@ rescue KuroRs::Error, StandardError => e
   exit 1
 end
 
+# sleep 2 ## for Arduno IR-Remote
+
 kr.verbose = true
 if hex_str.to_s.size > 0
   kr.write hex_str  

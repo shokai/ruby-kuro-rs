@@ -1,3 +1,7 @@
+=== 0.0.7 2011-12-03
+
+* add note for Arduino IR-Remote
+
 === 0.0.6 2011-10-31
 
 * bug fix kuro-rs-server
